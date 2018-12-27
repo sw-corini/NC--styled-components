@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import styled, { css, createGlobalStyle } from "styled-components";
+import styled, {
+    css,
+    createGlobalStyle,
+    ThemeProvider
+} from "styled-components";
+import theme from "./theme";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -8,29 +13,33 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
-const awesomeCard = css`
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
+const Card = styled.div`
+    background-color: red;
 `;
 
-const Input = styled.input.attrs({
-    required: true
-})`
-    border: none;
-    border-radius: 5px;
-    ${awesomeCard}
+const Button = styled.button`
+    border-radius: 30px;
+    padding: 25px 15px;
+    background-color: ${props => props.theme.successColor};
 `;
 
 class App extends Component {
     render() {
         return (
-            <Container>
-                <Input placeholder="hello" />
-            </Container>
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <Form />
+                </Container>
+            </ThemeProvider>
         );
     }
 }
+
+const Form = () => (
+    <Card>
+        <Button>Hello</Button>
+    </Card>
+);
 
 const Container = styled.div`
     height: 100vh;
