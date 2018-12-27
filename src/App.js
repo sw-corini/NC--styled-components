@@ -12,6 +12,14 @@ const GlobalStyle = createGlobalStyle`
         margin:0;
     }
 `;
+const Container = styled.div`
+    height: 100vh;
+    width: 100%;
+    background-color: #00838f;
+    ${Card}:last-child {
+        background-color: #ddd;
+    }
+`;
 
 const Card = styled.div`
     background-color: red;
@@ -40,11 +48,5 @@ const Form = () => (
         <Button>Hello</Button>
     </Card>
 );
-
-const Container = styled.div`
-    height: 100vh;
-    width: 100%;
-    background-color: #00838f;
-`;
 
 export default App;
